@@ -15,14 +15,34 @@ public class Route extends BaseEntity{
     private String gpxCoordinates;
     @Enumerated(EnumType.STRING)
     private LevelEnum level;
-    @Column(unique = true,nullable = false)
+    @Column(unique = true, nullable = false)
     private String name;
     @ManyToOne
     private User author;
     @Column
     private String videoUrl;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<Category> categories;
+    @OneToMany(mappedBy = "route", fetch = FetchType.EAGER)
+    private Set<Picture> pictures;
+
+    public Set<Category> getCategories() {
+        return categories;
+    }
+
+    public Route setCategories(Set<Category> categories) {
+        this.categories = categories;
+        return this;
+    }
+
+    public Set<Picture> getPictures() {
+        return pictures;
+    }
+
+    public Route setPictures(Set<Picture> pictures) {
+        this.pictures = pictures;
+        return this;
+    }
 
     public Route() {
     }
