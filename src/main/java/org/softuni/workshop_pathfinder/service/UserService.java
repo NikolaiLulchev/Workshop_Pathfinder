@@ -1,5 +1,6 @@
 package org.softuni.workshop_pathfinder.service;
 
+import org.softuni.workshop_pathfinder.model.entity.User;
 import org.softuni.workshop_pathfinder.model.service.UserServiceModel;
 
 public interface UserService {
@@ -14,4 +15,7 @@ public interface UserService {
     UserServiceModel findById(Long id);
 
     boolean isNameExists(String username);
+
+
+    User findCurrentLoggedUser();
 }
